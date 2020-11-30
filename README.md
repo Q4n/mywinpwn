@@ -1,6 +1,6 @@
-# mypwn
+# mywinpwn
 
-自己用的pwntools
+自己用的windows pwntools
 
 env: python3/python2
 
@@ -20,6 +20,8 @@ simple lib of pwntools
 ## APIs
 
 ### function 
+
+you can find them in q4nwin/toplevel.py
 
 
 ## refer

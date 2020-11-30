@@ -1,2 +1,4 @@
 python setup.py sdist
-@REM python -m twine upload dist/*
+del /a /f /s /q "*.pyc"
+rmdir /s /q "q4nwin.egg-info"
+python -m twine upload dist/*
