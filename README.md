@@ -10,7 +10,7 @@ env: python3/python2
 pip install q4nwin
 ```
 
-or you can find the latest version in `dist` directory
+或者你可以先注释掉build.bat中的后两行, 直接运行build.bat即可构建包在`dist`下
 
 ## PWN
 
