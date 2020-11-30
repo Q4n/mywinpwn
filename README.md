@@ -7,21 +7,31 @@ env: python3/python2
 ## install
 
 ```bash
-sudo pip install q4nwin
+pip install q4nwin
 ```
 
 or you can find the latest version in `dist` directory
 
 ## PWN
 
-simple lib of pwntools
+simple lib of [winpwn](https://github.com/Byzero512/winpwn)
+
+2020.11.30
+    
+    增加了一些alias, 比如`sd sla ru`, 删去一些对我而言无用的东西
+
+    `process`添加了`dbg`函数直接去调用`windbgx.attach`, 方便调试
+
+    新增了一个简化版本的 `flat/fit`, 对`(str, bytes, list, tuple)`按照 `context.arch` 进行展开
+
+    新增对`context.endian`大小端的支持
 
 
 ## APIs
 
 ### function 
 
-you can find them in q4nwin/toplevel.py
+you can find them in `q4nwin/toplevel.py`
 
 
 ## refer
