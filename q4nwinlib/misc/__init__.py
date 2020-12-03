@@ -109,13 +109,37 @@ def u8(s):
     return struct.unpack(endian+'B', Latin1_encode(s))[0]
 
 def Latin1_encode(string): # -> bytes
+    ''' Latin1_encode(string: str): -> bytes '''
     if sys.version_info[0]==3:
         return bytes(string,"Latin1")
     return bytes(string)
 def Latin1_decode(string): # -> str
+    ''' Latin1_encode(string: bytes): -> str '''
     if sys.version_info[0]==3:
         return str(string,'Latin1')
     return string
+
+def encode_hex(string):
+    ''' encode_hex(string: str) -> str
+>>> encode_hex('aaabcccd')
+'6161616263636364'
+>>>
+    '''
+    if sys.version_info[0]==3:
+        return hex(int.from_bytes(Latin1_encode(string),'big'))[2:]
+    return string.encode('hex')
+
+def decode_hex(string):
+    ''' decode_hex(string: str) -> str
+>>> decode_hex('11aabbccdd')
+'\x11....'
+>>> bytes(decode_hex('11aabbccdd'),"Latin1")
+b'\x11\xaa\xbb\xcc\xdd'
+>>>
+    '''
+    if sys.version_info[0]==3:
+        return Latin1_decode(bytes.fromhex(string))
+    return string.decode('hex')
 
 def color(content,color='purple'):
     if context.nocolor:
