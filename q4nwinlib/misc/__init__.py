@@ -156,7 +156,7 @@ def color(content,color='purple'):
     }
     return "\033[0;{}m{}\033[0m".format(c.get(color), content)
 
-def hexdump(src,length=16,all=True):
+def hexdump(src,length=16,all=True, doprint=1):
     FILTER = ''.join([(len(repr(chr(x))) == 3) and chr(x) or '.' for x in range(256)])
     lines = []
     for c in range(0, len(src), length):
@@ -178,7 +178,8 @@ def hexdump(src,length=16,all=True):
     if not all:
         if len(lines)>=0x20:
             lines=lines[0:8]+['......\n']+lines[-8:]
-    print(''.join(lines).strip())
+    if doprint:
+        print(''.join(lines).strip())
     return ''.join(lines).strip()
     
 def showbanner(markstr,colorstr='green',typestr='[+]',is_noout=None):

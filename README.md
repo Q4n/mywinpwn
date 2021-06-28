@@ -20,7 +20,7 @@ simple lib of [winpwn](https://github.com/Byzero512/winpwn)
 
 update `hexdump` function
 
-use `context.nocolor = 1` and `hexdump('aabbcc')` to return hexdump str
+use `context.nocolor = 1` and `hexdump('aabbcc', doprint=0)` to return hexdump str
 
 2020.11.30
     
