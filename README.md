@@ -16,6 +16,12 @@ pip install q4nwin
 
 simple lib of [winpwn](https://github.com/Byzero512/winpwn)
 
+2021.06.28
+
+update `hexdump` function
+
+use `context.nocolor = 1` and `hexdump('aabbcc')` to return hexdump str
+
 2020.11.30
     
     增加了一些alias, 比如`sd sla ru`, 删去一些对我而言无用的东西

@@ -179,6 +179,8 @@ def hexdump(src,length=16,all=True):
         if len(lines)>=0x20:
             lines=lines[0:8]+['......\n']+lines[-8:]
     print(''.join(lines).strip())
+    return ''.join(lines).strip()
+    
 def showbanner(markstr,colorstr='green',typestr='[+]',is_noout=None):
     if is_noout is None:
         is_noout=context.noout
