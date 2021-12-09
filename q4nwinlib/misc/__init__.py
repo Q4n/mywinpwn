@@ -55,7 +55,13 @@ def u64(s):
         endian = '<'
     else:
         endian = '>'
-    return struct.unpack(endian+'Q', Latin1_encode(s))[0]
+    if isinstance(s, str):
+        return struct.unpack(endian+'Q', Latin1_encode(s))[0]
+    elif isinstance(s, bytes):
+        return struct.unpack(endian+'Q', s)[0]
+    else:
+        raise TypeError("unk type in u64 args")
+
 def p32(i):
     endian = None
     if context.endian == 'little':
@@ -72,7 +78,13 @@ def u32(s):
         endian = '<'
     else:
         endian = '>'
-    return struct.unpack(endian+'I', Latin1_encode(s))[0]
+    if isinstance(s, str):
+        return struct.unpack(endian+'I', Latin1_encode(s))[0]
+    elif isinstance(s, bytes):
+        return struct.unpack(endian+'I', s)[0]
+    else:
+        raise TypeError("unk type in u32 args")
+
 def p16(i):
     endian = None
     if context.endian == 'little':
@@ -89,7 +101,12 @@ def u16(s):
         endian = '<'
     else:
         endian = '>'
-    return struct.unpack(endian+'H', Latin1_encode(s))[0]
+    if isinstance(s, str):
+        return struct.unpack(endian+'H', Latin1_encode(s))[0]
+    elif isinstance(s, bytes):
+        return struct.unpack(endian+'H', s)[0]
+    else:
+        raise TypeError("unk type in u16 args")
 def p8(i):
     endian = None
     if context.endian == 'little':
@@ -100,13 +117,19 @@ def p8(i):
     if sys.version_info[0]==3:
         return Latin1_decode(l)
     return l
+    
 def u8(s):
     endian = None
     if context.endian == 'little':
         endian = '<'
     else:
         endian = '>'
-    return struct.unpack(endian+'B', Latin1_encode(s))[0]
+    if isinstance(s, str):
+        return struct.unpack(endian+'B', Latin1_encode(s))[0]
+    elif isinstance(s, bytes):
+        return struct.unpack(endian+'B', s)[0]
+    else:
+        raise TypeError("unk type in u8 args")
 
 def Latin1_encode(string): # -> bytes
     ''' Latin1_encode(string: str): -> bytes '''

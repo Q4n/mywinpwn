@@ -3,7 +3,7 @@ from setuptools import setup, find_packages
 
 setup(
 name = "q4nwin",
-version = "0.0.6",
+version = "0.0.7",
 keywords = ("winpwn"),
 description = "my windows pwntools",
 license = "MIT Licence",
