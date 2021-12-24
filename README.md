@@ -32,6 +32,10 @@ use `context.nocolor = 1` and `hexdump('aabbcc', doprint=0)` to return hexdump s
 
     新增对`context.endian`大小端的支持
 
+20211224
+    删去setup.py中的 pefile capstone keystone的依赖简化安装, 
+    对应功能 PIE/NOPIE 和 asm中的
+
 
 ## APIs
 
