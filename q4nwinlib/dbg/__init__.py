@@ -246,6 +246,8 @@ class windbgx():
 
 def init_debugger():
     sc_base = os.path.dirname(os.path.abspath(__file__))
+
+
     ext_path = os.path.join(sc_base, "..", "..", "q4nwinext", "windbg_init.py")
     ext_path = os.path.abspath(ext_path)
 
@@ -258,6 +260,8 @@ def init_debugger():
 
     pykd_x64_dll_path = os.path.abspath(pykd_x64_dll_path)
     pykd_x86_dll_path = os.path.abspath(pykd_x86_dll_path)
+
+    # print("[debug]", pykd_x64_dll_path)
 
     cmdline_x64 = f".load {pykd_x64_dll_path};!py -g {ext_path};"
     cmdline_x86 = f".load {pykd_x86_dll_path};!py -g {ext_path};"
