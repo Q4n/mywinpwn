@@ -15,4 +15,5 @@ class context():
 
     # debug
     dbginit="" # debugger init command
-    windbg_path=None # set windbg.exe path 
+    windbgx=None
+    windbg=None

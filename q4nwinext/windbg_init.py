@@ -16,6 +16,8 @@ class cmd():
     def alias(clx,cmd,func):
         print("as {} !py -g {} {}".format(cmd, os.path.dirname(sys.argv[0])+"\\windbg_init.py",func))
         pykd.dbgCommand("as {} !py -g {} {}".format(cmd, os.path.dirname(sys.argv[0])+"\\windbg_init.py",func))
+
+        
 class info():
     @classmethod
     def reg(clx,name):
@@ -184,6 +186,7 @@ class parse():
             # print(sys.getdefaultencoding())
             return bytes(Str,"Latin1")
         return bytes(Str)
+    
 
 class context():
     @classmethod
@@ -217,16 +220,28 @@ class context():
     @classmethod
     def show(clx):
         print('--------------------------------------------------------------------')
-        context.asm()
+        try:
+            context.asm()
+        except:
+            pass
         print('--------------------------------------------------------------------')
-        context.regs()
+        try:
+            context.regs()
+        except:
+            pass
         print('--------------------------------------------------------------------')
-        context.stack()  
+        try:
+            context.stack()
+        except:
+            pass
+
 
 def lstr(addr):
     # print(pykd.loadCStr(addr))
     print(pykd.loadWStr(addr))
     # print(pykd.loadUnicodeString(addr))
+
+
 class break_event(pykd.eventHandler):
     def __init__(self):
         pykd.eventHandler.__init__(self)
@@ -234,12 +249,25 @@ class break_event(pykd.eventHandler):
         if status == pykd.executionStatus.Break:
             context.show()
 
+
 process.init()
 
 if __name__ == "__main__":
-    # process.init()
-    cmd.alias("xinfo",'xinfo')
-    cmd.alias("pcon",'pcon')
-    cmd.alias("lstr",'lstr')
-    a=break_event()
-    context.show()
+    if len(sys.argv)>1:
+        command=sys.argv[1]
+        if command=='xinfo':
+            print(info.xinfo(int(sys.argv[2],16)))
+        elif command=='pcon':
+            context.show()
+        elif command=='lstr':
+            lstr(int(sys.argv[2],16))
+    else:
+        cmd.alias("xinfo",'xinfo')
+        cmd.alias("pcon",'pcon')
+        cmd.alias("lstr",'lstr')
+        a=break_event()
+        context.show()
+        
+    # cmd.alias("xinfo",'test')
+    # a=break_event()
+    # context.show()
